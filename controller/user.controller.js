@@ -1,13 +1,19 @@
 import User from '../models/user.model.js';
 import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
 
 export async function createUser(req, res) {
     try {
         const { login, password } = req.body;
 
         console.log(login, password);
+        if (!login || !password) {
+            return res.status(400).json({message: 'Invalid input'});
+        }
 
-        const user = await User.create(login, password);
+        const encryptedPassword = await bcrypt.hash(password, 10);
+
+        const user = await User.create(login, encryptedPassword);
         console.log("User created: ", user);
         res.json(user);
     } catch (error) {
@@ -19,6 +25,10 @@ export async function createUser(req, res) {
 export async function loginUser(req, res) {
     try {
         const { login, password } = req.body;
+        if (!login || !password) {
+            return res.status(400).json({message: 'Invalid input'});
+        }
+
         const user = await User.comparePassword(login, password);
         if (!user) {
             return res.status(401).json({message: 'Invalid email or password'});

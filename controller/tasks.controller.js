@@ -13,7 +13,7 @@ export async function createTask(req, res) {
         const user = await User.getByLogin(userLogin);
 
         if (!user) {
-            return res.status(401).json({message: 'Forbidden'});
+            return res.status(403).json({message: 'Forbidden'});
         }
 
         const task = await create(user.id, title, description);
@@ -38,7 +38,7 @@ export async function getTaskById(req, res) {
         const user = await User.getByLogin(userLogin);
 
         if (!user) {
-            return res.status(401).json({message: 'Forbidden'});
+            return res.status(403).json({message: 'Forbidden'});
         }
 
         const task = await getById(id, user.id);
@@ -61,7 +61,7 @@ export async function deleteTask(req, res) {
         const user = await User.getByLogin(userLogin);
 
         if (!user) {
-            return res.status(401).json({message: 'Forbidden'});
+            return res.status(403).json({message: 'Forbidden'});
         }
 
         const task = await getById(id, user.id);
@@ -101,7 +101,7 @@ export async function updateTask(req, res) {
         });
 
         if (!user) {
-            return res.status(401).json({message: 'Forbidden'});
+            return res.status(403).json({message: 'Forbidden'});
         }
 
         const task = await getById(id, user.id);
@@ -132,7 +132,7 @@ export async function getAllTasks(req, res) {
     const user = await User.getByLogin(userLogin);
 
     if (!user) {
-        return res.status(401).json({message: 'Forbidden'});
+        return res.status(403).json({message: 'Forbidden'});
     }
 
     // get all tasks

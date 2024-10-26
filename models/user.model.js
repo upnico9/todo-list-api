@@ -1,4 +1,5 @@
 import client from "../database/connector.js";
+import bcrypt from 'bcryptjs';
 
 class User {
     constructor(login, password) {
@@ -48,7 +49,7 @@ class User {
 
     static async comparePassword(login, password) {
         const passwordData = await this.getPasswordBylogin(login);
-        return password === passwordData;
+        return await bcrypt.compare(password, passwordData);
     }
 }
 

@@ -1,12 +1,16 @@
 import pg from 'pg';
+import dotenv from 'dotenv';
+
+dotenv.config();
 const { Client } = pg;
 
+
 const client = new Client({
-    user: 'nicolas',
-    host: 'localhost',
-    database: 'todo_app',
-    password: 'test_password',
-    port: 5432,
+    user: process.env.DATABASE_USER || 'nicolas',
+    host: process.env.DATABASE_HOST || 'localhost',
+    database: process.env.DATABASE_NAME || 'todo_app',
+    password: process.env.DATABASE_PASSWORD ||'test_password',
+    port: process.env.PORT || 5432,
     options: '-c search_path=public'
 });
 

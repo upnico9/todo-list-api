@@ -14,8 +14,9 @@ Add data validation --> ok
 Add authentication --> ok
 
 Add error handling --> ok 
-Implement refresh-token
-Use env variables for database connection
+Implement refresh-token --> gonna do it when i create an app lol
+Use env variables for database connection --> ok 
+add password hash lol --> ok
 Add pagination for get multiple tasks --> ok
 Test with multiple users/tasks --> ok
 

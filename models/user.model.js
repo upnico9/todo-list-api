@@ -10,7 +10,7 @@ class User {
         const response = await client.query('SELECT * FROM users WHERE login = $1', [login]);
 
         if (response.rows.length === 0) {
-            return 'User not found';
+            return false;
         }
 
         return response.rows[0];
@@ -31,16 +31,16 @@ class User {
         const response = await client.query('DELETE FROM users WHERE login = $1', [login]);
 
         if (response.rowCount === 0) {
-            return 'User not deleted';
+            return false;
         };
 
-        return `User with login ${this.login} deleted`;
+        return true;
     }
 
     static async getPasswordBylogin(login) {
         const response = await client.query('SELECT password FROM users WHERE login = $1', [login]);
         if (response.rows.length === 0) {
-            return 'User not found';
+            return false;
         };
 
         return response.rows[0].password;

@@ -16,7 +16,7 @@ Add authentication --> ok
 Add error handling 
 Implement refresh-token
 Use env variables for database connection
-Add pagination for get multiple tasks
+Add pagination for get multiple tasks --> ok
 Test with multiple users/tasks
 
 ## Models 

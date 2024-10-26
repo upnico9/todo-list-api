@@ -9,8 +9,7 @@ export async function createTask(req, res) {
             return res.status(400).json({message: 'Title and description are required'});
         }
 
-        // const userLogin = req.user.login | 1;
-        const userLogin = "test";
+        const userLogin = req.user.login
         const user = await User.getByLogin(userLogin);
 
         if (!user) {
@@ -34,8 +33,8 @@ export async function createTask(req, res) {
 export async function getTaskById(req, res) {
     try {
         const { id } = req.params;
-        const userLogin = "test";
-        // const userLogin = req.user.login;
+
+        const userLogin = req.user.login;
         const user = await User.getByLogin(userLogin);
 
         if (!user) {
@@ -57,8 +56,8 @@ export async function getTaskById(req, res) {
 export async function deleteTask(req, res) {
     try {
         const { id } = req.params;
-        const userLogin = "test";
-        // const userLogin = req.user.login;
+        const userLogin = req.user.login;
+
         const user = await User.getByLogin(userLogin);
 
         if (!user) {
@@ -85,8 +84,8 @@ export async function deleteTask(req, res) {
 export async function updateTask(req, res) {
     try {
         const { id } = req.params;
-        const userLogin = "test";
-        // const userLogin = req.user.login;
+        
+        const userLogin = req.user.login;
         const user = await User.getByLogin(userLogin);
 
         if (!req.body.title && !req.body.description && !req.body.status) {
@@ -129,8 +128,7 @@ export async function getAllTasks(req, res) {
     const page = Number(req.query.page) || 1;
     const limit = Number(req.query.limit) || 10;
 
-    const userLogin = "test";
-        // const userLogin = req.user.login;
+    const userLogin = req.user.login;
     const user = await User.getByLogin(userLogin);
 
     if (!user) {

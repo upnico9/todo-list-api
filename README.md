@@ -13,11 +13,11 @@ Create crud --> ok
 Add data validation --> ok
 Add authentication --> ok
 
-Add error handling 
+Add error handling --> ok 
 Implement refresh-token
 Use env variables for database connection
 Add pagination for get multiple tasks --> ok
-Test with multiple users/tasks
+Test with multiple users/tasks --> ok
 
 ## Models 
 
